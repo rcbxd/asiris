@@ -1,0 +1,6 @@
+{
+  "appId": "com.rcbxd.app",
+  "appName": "App",
+  "webDir": "build",
+  "npmClient": "npm"
+}
