@@ -65,60 +65,23 @@ const appPages: AppPage[] = [
   }
 ];
 
-export interface AppProps {}
-
-export interface AppState {}
-
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: any) {
-    super(props);
-    PushNotifications.register();
-
-    PushNotifications.addListener(
-      "registration",
-      (token: PushNotificationToken) => {
-        alert("Push registration success, token: " + token.value);
-      }
-    );
-
-    PushNotifications.addListener("registrationError", (error: any) => {
-      alert("Error on registration: " + JSON.stringify(error));
-    });
-
-    PushNotifications.addListener(
-      "pushNotificationReceived",
-      (notification: PushNotification) => {
-        alert("Push received: " + JSON.stringify(notification));
-      }
-    );
-
-    PushNotifications.addListener(
-      "pushNotificationActionPerformed",
-      (notification: PushNotificationActionPerformed) => {
-        alert("Push action performed: " + JSON.stringify(notification));
-      }
-    );
-  }
-  render() {
-    return (
-      <IonApp>
-        <IonReactRouter>
-          <IonSplitPane contentId="main">
-            <Menu appPages={appPages} />
-            <IonRouterOutlet id="main">
-              <Route path="/account" component={Account} exact={true} />
-              <Route path="/home/contacts" component={Home} exact={true} />
-              <Route path="/home/chats" component={Chats} exact={true} />
-              <Route path="/home/chats/:id" component={Chat} exact={true} />
-              <Route path="/settings" component={Settings} exact={true} />
-              <Route path="/" component={SignUp} exact={true} />
-            </IonRouterOutlet>
-            <Route path="/account/login" component={Login} exact={true} />
-          </IonSplitPane>
-        </IonReactRouter>
-      </IonApp>
-    );
-  }
-}
+const App: React.FC = () => (
+  <IonApp>
+    <IonReactRouter>
+      <IonSplitPane contentId="main">
+        <Menu appPages={appPages} />
+        <IonRouterOutlet id="main">
+          <Route path="/account" component={Account} exact={true} />
+          <Route path="/home/contacts" component={Home} exact={true} />
+          <Route path="/home/chats" component={Chats} exact={true} />
+          <Route path="/home/chats/:id" component={Chat} exact={true} />
+          <Route path="/settings" component={Settings} exact={true} />
+        </IonRouterOutlet>
+        <Route path="/account/login" component={Login} exact={true} />
+        <Route path="/" component={SignUp} exact={true} />
+      </IonSplitPane>
+    </IonReactRouter>
+  </IonApp>
+);
 
 export default App;

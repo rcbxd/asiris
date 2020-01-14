@@ -1,6 +1,12 @@
 {
-  "appId": "com.rcbxd.app",
-  "appName": "App",
+  "appId": "com.asiris.app",
+  "appName": "asiris",
   "webDir": "build",
-  "npmClient": "npm"
+  "npmClient": "npm",
+  "server": {
+    "hostname": "localhost",
+    "iosScheme": "ionic",
+    "androidScheme": "http",
+    "allowNavigation": ["example.org", "*.example.org", "192.0.2.1"]
+  }
 }
